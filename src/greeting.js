@@ -1,0 +1,23 @@
+module.exports =
+    `syntax = "proto3";
+
+package greeting;
+
+message Greeting {
+    string message = 1;
+    string timeStart = 2;
+}
+
+message Person {
+    string name = 1;
+    string timeStart = 2;
+}
+message Empty {}
+
+service GreetingService {
+    rpc hello (Person) returns (Greeting) {};
+    rpc helloServerSide (Person) returns (stream Greeting) {};
+    rpc helloClientSide (stream Person) returns (Greeting) {};
+    rpc helloBidirectional (stream Person) returns (stream Greeting) {};
+}
+`;
